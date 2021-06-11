@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import CoinCard from "./lib/CoinCard.svelte";
+    import Loader from './lib/Loader.svelte';
 
     let name = "Crypto Tracker";
 
@@ -22,8 +23,9 @@
     <h1>{name}</h1>
 
     {#if coins.length === 0}
-        <button on:click={fetchCoins} class="myButton">Fetch Coin Data!</button>
+        <Loader/>
     {:else}
+        <button on:click={fetchCoins} class="myButton">Update Coin Data!</button>
         <div class="grid">
             {#each coins as coin}
                 <CoinCard {coin} />
