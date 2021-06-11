@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from 'svelte';
     import CoinCard from "./lib/CoinCard.svelte";
 
     let name = "Crypto Tracker";
@@ -13,6 +14,8 @@
         coins = data.coins;
         console.log(coins);
     }
+
+    onMount(fetchCoins)
 </script>
 
 <main>
@@ -32,9 +35,7 @@
         Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
         apps.
     </p>
-    <p>
-        new_by_4_at_1578906096
-    </p>
+    <p>new_by_4_at_1578906096</p>
 </main>
 
 <style>
