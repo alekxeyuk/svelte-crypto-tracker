@@ -20,18 +20,34 @@
             {coin.priceChange1w}%
         </div>
         <div class="detail-field">{coin.price.toFixed(2)}$</div>
-        <a class="detail-field" href={coin.websiteUrl}>Website &#8594;</a>
+        {#if coin.websiteUrl}
+            <a class="detail-field" href={coin.websiteUrl}>Site &#8594;</a> 
+        {:else}
+            <span class="detail-field">No Site</span>
+        {/if}
     </div>
 </div>
 
 <style>
     .coin-card {
+        display: block;
+        top: 0px;
+        position: relative;
+        background-color: #f2f8f9;
+        border-radius: 4px;
+        margin: 12px;
+        text-decoration: none;
+        z-index: 0;
+        overflow: hidden;
+        border: 1px solid #f2f8f9;
+        transition: all 0.2s ease-out;
+    }
+    .coin-card:hover {
+        transition: all 0.2s ease-out;
+        box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+        top: -4px;
+        border: 1px solid #cccccc;
         background-color: white;
-        border-radius: 20px;
-        --tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-            0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-            var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
     }
     .coin-image {
         max-width: 4rem;
@@ -52,6 +68,13 @@
         font-size: 15px;
         font-weight: bold;
         padding: 15px 0;
+    }
+    a.detail-field {
+        text-decoration: none;
+        color: blue;
+    }
+    a.detail-field:hover {
+        color: cornflowerblue;
     }
     .detail-field:not(:last-child) {
         border-right: 1px solid #d1d5db;
